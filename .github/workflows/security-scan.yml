@@ -46,9 +46,3 @@ jobs:
         with:
           name: sbom
           path: sbom.json
-      - name: Install cosign
-        uses: sigstore/cosign-installer@v3
-      - name: Sign image with cosign (keyless)
-        run: cosign sign --yes nexcart-clean-arch-lab:${{ github.sha }}
-        env:
-          COSIGN_EXPERIMENTAL: "1"
