@@ -1,0 +1,10 @@
+title = "Gitleaks configuration"
+
+[extend]
+  useDefault = true
+
+[allowlist]
+  description = "Allow .env.example"
+  paths = [
+    '''\.env\.example''',
+  ]
