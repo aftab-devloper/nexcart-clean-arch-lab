@@ -1,0 +1,8 @@
+repos:
+  - repo: local
+    hooks:
+      - id: gitleaks
+        name: gitleaks
+        entry: cmd /c gitleaks git --staged
+        language: system
+        pass_filenames: false
