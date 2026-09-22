@@ -1,0 +1,25 @@
+name: Attest Source Artifact
+
+on:
+  push:
+    branches: ["master", "feat/*", "feat/**"]
+
+permissions:
+  id-token: write
+  attestations: write
+  contents: read
+
+jobs:
+  attest-source:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Create source archive
+        run: tar -czf nexcart-source.tar.gz --exclude='.git' .
+
+      - name: Attest Build Provenance
+        uses: actions/attest-build-provenance@v2
+        with:
+          subject-path: nexcart-source.tar.gz
